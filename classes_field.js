@@ -10,7 +10,7 @@ class field{
         this.id = id
         this.nachbarn = []
 
-        this.position = {x: (id%numPerRow), y: parseInt(id/numPerRow)}
+        this.position = {x: getXY(id).x, y: getXY(id).y}
 
         this.alive = false
         this.next = false
@@ -26,7 +26,7 @@ field.prototype.isAlive = function(){
     this.nachbarn.forEach(nachbar => { 
         if (nachbar.alive){z+=1}});
     
-    console.log("lebendes field z " + z)
+    
     //wenn eine bevölkerte zelle genau 2 oder 3 nachbarn hat überlebt sie, sonst nicht.
     if ((z == 2) || (z == 3)){
         this.next = true
@@ -42,7 +42,7 @@ field.prototype.isEmpty = function(){
         if (nachbar.alive){z+=1}});
     
     //wenn eine leere zelle genau 3 lebende nachbarn hat, wird sie in der nächsten iteration bevölkert, sonst nicht.
-    console.log("empty field z " + z)
+    
     if (z === 3){this.next = true}
     else{this.next = false}
 }

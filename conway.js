@@ -10,5 +10,5 @@ cellArray.forEach(field => field.getMoore())
 randomStart(0.12)
 
 drawArray(cellArray)
-main()
+editor()
 console.log(cellArray)

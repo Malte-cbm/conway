@@ -33,7 +33,35 @@ function fillCell(pos){
 
 }
 
+
 //clearScreen resettet den canvas
 function clearScreen(){
     ctx.clearRect(0, 0, canvas.width, canvas.height)
+}
+
+//aus der ID XY-position berechnen bezogen auf das array
+function getXY(id){
+    
+    let x = id%numPerRow
+    let y = parseInt(id/numPerRow)
+    return{x,y}
+}
+
+
+function getID(x,y){
+    return (y * numPerRow + x)
+}
+
+function getXYCoord(id){
+    let x = boxBreit*(id%numPerRow)
+    let y = boxHoch*(parseInt(id/numPerRow))
+    return {x,y}
+}
+
+
+function getIDCoord(x,y){
+    let arrX = parseInt(x/boxBreit)
+    let arrY = parseInt(y/boxHoch)
+    let erg = getID(arrX,arrY)
+    return erg
 }
