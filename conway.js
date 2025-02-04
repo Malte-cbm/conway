@@ -7,10 +7,8 @@ for (let i=0;i<numCells;i++){
 
 cellArray.forEach(field => field.getMoore())
 
-randomStart(0.42)
+randomStart(0.12)
 
-cellArray.forEach(field => {
-    if(field.alive) { fillCell(field.position)}
-})
-
+drawArray(cellArray)
+main()
 console.log(cellArray)

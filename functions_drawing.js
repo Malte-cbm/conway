@@ -14,7 +14,15 @@ function drawGrid(){
     ctx.stroke()
 }
 
-
+//drawArray malt die aktuell lebenden zellen schwarz aus, übergeben wird ein array mit objekten der klasse field
+function drawArray(array){
+    clearScreen()
+    ctx.beginPath()
+    drawGrid()
+    array.forEach(field => {
+        if(field.alive){fillCell(field.position)}
+    })
+}
 
 //an fillCell kann eine position der form {x:value, y:value} übergeben werden, diese soll dann ausgemalt werden
 function fillCell(pos){
@@ -23,4 +31,9 @@ function fillCell(pos){
     ctx.fillStyle = "black"
     ctx.fillRect(pos.x * boxBreit, pos.y * boxHoch, boxBreit, boxHoch)
 
+}
+
+//clearScreen resettet den canvas
+function clearScreen(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
 }

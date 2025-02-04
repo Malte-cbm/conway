@@ -26,8 +26,9 @@ field.prototype.isAlive = function(){
     this.nachbarn.forEach(nachbar => { 
         if (nachbar.alive){z+=1}});
     
+    console.log("lebendes field z " + z)
     //wenn eine bevölkerte zelle genau 2 oder 3 nachbarn hat überlebt sie, sonst nicht.
-    if (z === 2 || 3){
+    if ((z == 2) || (z == 3)){
         this.next = true
     }
     else{this.next = false}
@@ -41,8 +42,15 @@ field.prototype.isEmpty = function(){
         if (nachbar.alive){z+=1}});
     
     //wenn eine leere zelle genau 3 lebende nachbarn hat, wird sie in der nächsten iteration bevölkert, sonst nicht.
+    console.log("empty field z " + z)
     if (z === 3){this.next = true}
     else{this.next = false}
+}
+
+field.prototype.iterate = function(){
+    if (this.alive){this.isAlive()}
+    else if(!this.alive){this.isEmpty()}
+    else{console.log("Kritischer Iterationsfehler in der Zelle " + this.id)}
 }
 
 //die Methode getMoore bestimmt die Moore-Nachbarn einer zelle und weist sie in das nachbarn-array ein.

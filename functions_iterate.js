@@ -10,3 +10,9 @@ function randomStart(prozentwert){
         cellArray[z].alive = true 
     }
 }
+
+//die nächste iteration berechnen und zeichnen
+function nextIter(){
+    cellArray.forEach(field => field.iterate())
+
+}
