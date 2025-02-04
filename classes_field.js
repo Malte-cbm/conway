@@ -46,105 +46,30 @@ field.prototype.isEmpty = function(){
 }
 
 //die Methode getMoore bestimmt die Moore-Nachbarn einer zelle und weist sie in das nachbarn-array ein.
+
 field.prototype.getMoore = function(){
-    
-    //erstmal die normalen felder, die nicht am rand liegen
-    if ((this.x != 0) && (this.x != (numPerRow-1))){
 
-        if ((this.y != 0) && (this.y != (numRows -1))){
-            
-            this.nachbarn.push(cellArray[this.id - numPerRow], cellArray[this.id - numPerRow +1], cellArray[this.id + 1],
-                                cellArray[this.id + numPerRow + 1], cellArray[this.id + numPerRow], cellArray[this.id + numPerRow - 1],
-                                cellArray[this.id - 1], cellArray[this.id - numPerRow -1])
-        }
-    }
+    let a = (this.position.y == 0) ? true:false //ist a true, sind wir in der oberen Zeile
+    let b = (this.position.y == (numRows-1)) ? true:false //ist b true sind wir in der unteren Zeile
+    let c = (this.position.x == 0) ? true:false //wenn c true dann linker rand
+    let d = (this.position.x == (numPerRow-1)) ? true:false //wenn d true dann rechter rand
 
-    //linker Rand außer die ecken
-    else if ((this.x == 0) && ((this.y !=0) &&(this.y != (numRows-1)))){
+    //hilfsvektor mit den standardindextransformationswerten, welche dann transformiert werden sollen [o,u,l,r]
+    let hilfsvektor = [-numPerRow, numPerRow, -1, +1]
 
-        this.nachbarn.push(cellArray[this.id - numPerRow], cellArray[this.id - numPerRow +1], cellArray[this.id + 1],
-            cellArray[this.id + numPerRow + 1], cellArray[this.id + numPerRow], cellArray[this.id + 2*numPerRow - 1],
-            cellArray[this.id + numPerRow- 1], cellArray[this.id - 1])
-    }
+    if (a){hilfsvektor[0] += numCells}
+    if (b){hilfsvektor[1] -= numCells}
+    if (c){hilfsvektor[2] += numPerRow}
+    if (d){hilfsvektor[3] -= numPerRow}
 
-    //rechter Rand außer die ecken
-    else if ((this.x == (numPerRow-1)) && ((this.y !=0) &&(this.y != (numRows-1)))){
+    //durch addition der jeweiligen transformationsindizes werden die nachbarn der reihenfolge nach bestimmt
 
-        this.nachbarn.push(cellArray[this.id - numPerRow], cellArray[this.id - 2*numPerRow +1], cellArray[this.id - numPerRow + 1],
-            cellArray[this.id + 1], cellArray[this.id + numPerRow], cellArray[this.id + numPerRow - 1],
-            cellArray[this.id - 1], cellArray[this.id - numPerRow -1])
-    }
-
-    //oberer Rand außer die ecken
-    else if ((this.y == 0) && ((this.x !=0) &&(this.x != (numPerRow-1)))){
-
-        this.nachbarn.push(cellArray[this.id - numPerRow + numCells], cellArray[this.id - numPerRow + numCells +1], cellArray[this.id + 1],
-            cellArray[this.id + numPerRow + 1], cellArray[this.id + numPerRow], cellArray[this.id + numPerRow - 1],
-            cellArray[this.id - 1], cellArray[this.id - numPerRow + numCells -1])
-    }
-
-    //unterer Rand außer die ecken
-    else if ((this.y == (numRows-1)) && ((this.x !=0) &&(this.x != (numPerRow-1)))){
-
-        this.nachbarn.push(cellArray[this.id - numPerRow], cellArray[this.id - numPerRow +1], cellArray[this.id + 1],
-            cellArray[this.id + numPerRow - numCells + 1], cellArray[this.id + numPerRow - numCells ], cellArray[this.id + numPerRow - numCells - 1],
-            cellArray[this.id - 1], cellArray[this.id - numPerRow -1])
-    }
-
-    //oben links
-    else if ((this.y == 0) && (this.x == 0)){
-        this.nachbarn.push(cellArray[this.id - numPerRow +numCells], cellArray[this.id - numPerRow + numCells +1], cellArray[this.id + 1],
-            cellArray[this.id + numPerRow + 1], cellArray[this.id + numPerRow], cellArray[this.id + 2*numPerRow - 1],
-            cellArray[this.id + numPerRow - 1], cellArray[this.id + numCells -1])
-    }
-
-    //oben rechts
-    else if ((this.y == 0) && (this.x == (numPerRow-1))){
-
-        this.nachbarn.push(cellArray[this.id - numPerRow +numCells], cellArray[this.id - 2*numPerRow +numCells +1], cellArray[this.id + 1],
-            cellArray[this.id + numPerRow + 1], cellArray[this.id + numPerRow], cellArray[this.id - 1],
-            cellArray[this.id - numPerRow - 1], cellArray[this.id - numPerRow + numCells-1])
-    }
-
-    //unten rechts
-    else if ((this.y == (numRows-1)) && (this.x == (numPerRow-1))){
-
-        this.nachbarn.push(cellArray[this.id - numPerRow], cellArray[this.id - 2*numPerRow +1], cellArray[this.id  -numPerRow+ 1],
-            cellArray[this.id -numCells + 1], cellArray[this.id + numPerRow -numCells], cellArray[this.id + numPerRow -numCells - 1],
-            cellArray[this.id - 1], cellArray[this.id - numPerRow -1])
-    }
-
-    //unten links
-    else if ((this.y == (numRows-1)) && (this.x == 0)){
-
-        this.nachbarn.push(cellArray[this.id - numPerRow], cellArray[this.id - numPerRow +1], cellArray[this.id + 1],
-            cellArray[this.id + numPerRow -numCells + 1], cellArray[this.id + numPerRow -numCells], cellArray[this.id + 2*numPerRow -numCells - 1],
-            cellArray[this.id +numPerRow - 1], cellArray[this.id  -1])
-    }
-
-    else{console.error("Desaster bei der Nachbarnzuweisung!")}
-}
-
-field.prototype.getBetterMoore = function(){
-
-    let a = this.id - numPerRow //ist a negativ, sind wir in der oberen Zeile
-    let b = this.id + numPerRow //ist b > numCells sind wir in der unteren Zeile
-    let c = this.id % numPerRow //wenn c == 0 dann linker rand
-    let d = this.id % (numPerRow-1) //wenn d==0 dann rechter rand
-
-    if (a < 0){
-        a += numCells
-    }
-
-    if (b>numCells){
-        b -= numCells
-    }
-    if (c==0){
-        c+=numPerRow
-    }
-    if (d==0){
-        d -= numPerRow-1
-    }
-
-    
+    this.nachbarn.push(cellArray[(this.id + hilfsvektor[0] + hilfsvektor[2])]) //oben links nachbar
+    this.nachbarn.push(cellArray[(this.id + hilfsvektor[0])])                  //oben mitte
+    this.nachbarn.push(cellArray[(this.id + hilfsvektor[0] + hilfsvektor[3])]) //oben rechts
+    this.nachbarn.push(cellArray[(this.id + hilfsvektor[2])])                  //links
+    this.nachbarn.push(cellArray[(this.id + hilfsvektor[3])])                  //rechts
+    this.nachbarn.push(cellArray[(this.id + hilfsvektor[1] + hilfsvektor[2])]) //unten links
+    this.nachbarn.push(cellArray[(this.id + hilfsvektor[1])])                  //unten
+    this.nachbarn.push(cellArray[(this.id + hilfsvektor[1] + hilfsvektor[3])]) //unten rechts
 }
