@@ -2,23 +2,35 @@
 
 function step_by_step(){
     textfeld.value = "Iterationsmodus"
+    clearInterval(loop)
+    loop = null
+    canvas.onclick = evt =>{
+        nextIter();}
+    
+    gnopfdrug()
+}
+
+function auto_run(){
+
+    textfeld.value = "Auto Run => 1 Sekunde"
+
+    if (!loop){
+        loop = setInterval(()=> {
+        nextIter()
+
+    }, 1000)}
 
     canvas.onclick = evt =>{
-    nextIter();
-    cellArray.forEach(field => field.alive = field.next)
-    
-    drawArray(cellArray)
-    onkeydown = hum =>{
-
-        editor()
-        
-    }
-}}
+        clearInterval(loop)
+        loop = null
+        editor()}
+}
 
 function editor(){
 
     textfeld.value = "Editormodus"
-
+    clearInterval(loop)
+    loop = null
     canvas.onclick = evt =>{
 
         let cl_x = evt.offsetX
@@ -27,16 +39,15 @@ function editor(){
         let cl_id = getIDCoord(cl_x,cl_y)
         console.log("x: ", cl_x, "y: ", cl_y, "id: ", cl_id)
         cellArray[cl_id].alive = !cellArray[cl_id].alive
-        //fillCell(cellArray[cl_id].position)
         drawArray(cellArray)
 
     }
-    
-    onkeydown = hum =>{
+    gnopfdrug()
+    // onkeydown = hum =>{
 
-        step_by_step()
+    //     step_by_step()
         
-    }
+    // }
 
 }
 

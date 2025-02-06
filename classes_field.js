@@ -4,7 +4,7 @@
 //die klasse field stellt eine einzelne zelle der welt dar, mit ID, den jeweiligen moore-nachbarschaften, 
 //der position in koordinatenform und einem wert, der angibt ob die zelle bevölkert ist oder nicht. this.next
 //speichert, ob ein feld in der nächsten iteration am leben sein wird.
-class field{
+class Field{
 
     constructor(id){
         this.id = id
@@ -19,7 +19,7 @@ class field{
 }
 
 //die klasse field bekommt die beiden Methoden isAlive und isEmpty, um ihre nächste Iteration zu bestimmen
-field.prototype.isAlive = function(){
+Field.prototype.isAlive = function(){
 
     //zählt die Anzahl der lebenden nachbarn in z rein.
     let z = 0
@@ -33,7 +33,7 @@ field.prototype.isAlive = function(){
     else{this.next = false}
 }
 
-field.prototype.isEmpty = function(){
+Field.prototype.isEmpty = function(){
 
     //zählt die Anzahl der lebenden nachbarn in z rein.
     let z = 0
@@ -46,7 +46,7 @@ field.prototype.isEmpty = function(){
     else{this.next = false}
 }
 
-field.prototype.iterate = function(){
+Field.prototype.iterate = function(){
     if (this.alive){this.isAlive()}
     else if(!this.alive){this.isEmpty()}
     else{console.log("Kritischer Iterationsfehler in der Zelle " + this.id)}
@@ -54,7 +54,7 @@ field.prototype.iterate = function(){
 
 //die Methode getMoore bestimmt die Moore-Nachbarn einer zelle und weist sie in das nachbarn-array ein.
 
-field.prototype.getMoore = function(){
+Field.prototype.getMoore = function(){
 
     let a = (this.position.y == 0) ? true:false //ist a true, sind wir in der oberen Zeile
     let b = (this.position.y == (numRows-1)) ? true:false //ist b true sind wir in der unteren Zeile

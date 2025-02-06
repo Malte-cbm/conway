@@ -14,5 +14,7 @@ function randomStart(prozentwert){
 //die nächste iteration berechnen und zeichnen
 function nextIter(){
     cellArray.forEach(field => field.iterate())
+    cellArray.forEach(field => field.alive = field.next)
+    drawArray(cellArray)
 
 }

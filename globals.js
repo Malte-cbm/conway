@@ -3,6 +3,7 @@ let numRows = 11    //maximaler y-Wert 19
 
 let numCells = numPerRow*numRows
 let cellArray = []
+let loop = null
 
 //json teststrings
 let test = '{"name":"Testsave","bitsize":20,"gridForm":{"x":3,"y":3},"felderliste":[],"komprimiert":[27]}'

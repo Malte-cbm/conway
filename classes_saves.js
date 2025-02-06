@@ -1,6 +1,6 @@
 //classes_saves.js
 
-class save{
+class Save{
 
     constructor(){
 
@@ -16,7 +16,7 @@ class save{
 
 //array_feld, name, gridForm={x:numPerRow, y:numRows}, komprimiert=null
 
-save.prototype.serialisieren = function(name){
+Save.prototype.serialisieren = function(name){
 
     this.name = name
     this.felderliste = cellArray
@@ -39,19 +39,19 @@ save.prototype.serialisieren = function(name){
     return JSON.stringify(this)
 }
 
-save.prototype.deserialisieren = function(json_string){
+Save.prototype.deserialisieren = function(json_string){
 
     Object.assign(this, JSON.parse(json_string))
     let dim_var = this.gridForm.y * this.gridForm.x
 
     for (let i=0;i<dim_var;i++){
-    this.felderliste.push(new field(i))
+    this.felderliste.push(new Field(i))
     }
 
     
 }
 
-save.prototype.dekomprimieren = function(){
+Save.prototype.dekomprimieren = function(){
 
     if (this.komprimiert){
         
