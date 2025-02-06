@@ -26,7 +26,6 @@ field.prototype.isAlive = function(){
     this.nachbarn.forEach(nachbar => { 
         if (nachbar.alive){z+=1}});
     
-    
     //wenn eine bevölkerte zelle genau 2 oder 3 nachbarn hat überlebt sie, sonst nicht.
     if ((z == 2) || (z == 3)){
         this.next = true

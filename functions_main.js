@@ -1,7 +1,8 @@
 //functions_main.js
 
-function main(){
-    
+function step_by_step(){
+    textfeld.value = "Iterationsmodus"
+
     canvas.onclick = evt =>{
     nextIter();
     cellArray.forEach(field => field.alive = field.next)
@@ -10,11 +11,13 @@ function main(){
     onkeydown = hum =>{
 
         editor()
-        return null
+        
     }
 }}
 
 function editor(){
+
+    textfeld.value = "Editormodus"
 
     canvas.onclick = evt =>{
 
@@ -31,8 +34,18 @@ function editor(){
     
     onkeydown = hum =>{
 
-        main()
-        return null
+        step_by_step()
+        
     }
+
+}
+
+function preset(){
+
+fetch('daten.json')
+  .then(response => response.json())  // JSON in ein Objekt umwandeln
+  .then(data => console.log(data))    // JSON-Daten ausgeben
+  .catch(error => console.error('Fehler:', error));
+ 
 
 }
