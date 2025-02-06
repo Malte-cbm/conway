@@ -18,7 +18,7 @@ function auto_run(){
         loop = setInterval(()=> {
         nextIter()
 
-    }, 1000)}
+    }, 100)}
 
     canvas.onclick = evt =>{
         clearInterval(loop)
@@ -43,11 +43,6 @@ function editor(){
 
     }
     gnopfdrug()
-    // onkeydown = hum =>{
-
-    //     step_by_step()
-        
-    // }
 
 }
 

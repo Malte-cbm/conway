@@ -16,11 +16,13 @@ class Save{
 
 //array_feld, name, gridForm={x:numPerRow, y:numRows}, komprimiert=null
 
-Save.prototype.serialisieren = function(name){
+Save.prototype.serialisieren = function(name, bitsize=20){
 
     this.name = name
     this.felderliste = cellArray
     this.komprimiert =[]
+    this.bitsize = bitsize
+    this.gridForm = {x:numPerRow, y:numRows}
     let bitBuffer = ""
 
     this.felderliste.forEach((feld, index) => {
