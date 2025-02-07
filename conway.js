@@ -7,7 +7,7 @@ for (let i=0;i<numCells;i++){
 
 cellArray.forEach(field => field.getMoore())
 
-randomStart(0.32)
+//randomStart(0.32)
 
 drawArray(cellArray)
 editor()

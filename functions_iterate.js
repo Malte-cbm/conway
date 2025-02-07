@@ -15,6 +15,8 @@ function randomStart(prozentwert){
 function nextIter(){
     cellArray.forEach(field => field.iterate())
     cellArray.forEach(field => field.alive = field.next)
+    it_counter += 1
+    counter_ele.value = "Iteration Nummer: " + it_counter
     drawArray(cellArray)
 
 }

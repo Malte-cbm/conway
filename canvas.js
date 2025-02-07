@@ -5,6 +5,11 @@ textfeld.id = 'textfeld'
 textfeld.value = "Editor"
 document.body.appendChild( textfeld ) 
 
+let counter_ele = document.createElement("input")
+counter_ele.id = 'counter'
+counter_ele.value = "Iteration Nummer: " + it_counter
+document.body.appendChild( counter_ele ) 
+
 
 let canvas = document.createElement( "canvas" )
 let ctx = canvas.getContext("2d")
@@ -37,6 +42,7 @@ document.body.appendChild(knopf2);
 document.getElementById("button_auto").onmousedown = function(){console.log("Knopf 2 gedrückt!");
     auto_run()
 }
+
 let knopf3 = document.createElement("button")
 knopf3.innerHTML = "Editor  (E)"
 knopf3.id = "button_editor"

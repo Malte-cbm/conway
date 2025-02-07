@@ -71,12 +71,12 @@ Field.prototype.getMoore = function(){
 
     //durch addition der jeweiligen transformationsindizes werden die nachbarn der reihenfolge nach bestimmt
 
-    this.nachbarn.push(cellArray[(this.id + hilfsvektor[0] + hilfsvektor[2])]) //oben links nachbar
-    this.nachbarn.push(cellArray[(this.id + hilfsvektor[0])])                  //oben mitte
-    this.nachbarn.push(cellArray[(this.id + hilfsvektor[0] + hilfsvektor[3])]) //oben rechts
-    this.nachbarn.push(cellArray[(this.id + hilfsvektor[2])])                  //links
-    this.nachbarn.push(cellArray[(this.id + hilfsvektor[3])])                  //rechts
-    this.nachbarn.push(cellArray[(this.id + hilfsvektor[1] + hilfsvektor[2])]) //unten links
-    this.nachbarn.push(cellArray[(this.id + hilfsvektor[1])])                  //unten
-    this.nachbarn.push(cellArray[(this.id + hilfsvektor[1] + hilfsvektor[3])]) //unten rechts
+    this.nachbarn.push(cellArray[(this.id + hilfsvektor[0] + hilfsvektor[2])]) //oben links nachbar 0
+    this.nachbarn.push(cellArray[(this.id + hilfsvektor[0])])                  //oben mitte 1
+    this.nachbarn.push(cellArray[(this.id + hilfsvektor[0] + hilfsvektor[3])]) //oben rechts 2
+    this.nachbarn.push(cellArray[(this.id + hilfsvektor[2])])                  //links 3
+    this.nachbarn.push(cellArray[(this.id + hilfsvektor[3])])                  //rechts 4
+    this.nachbarn.push(cellArray[(this.id + hilfsvektor[1] + hilfsvektor[2])]) //unten links 5
+    this.nachbarn.push(cellArray[(this.id + hilfsvektor[1])])                  //unten 6
+    this.nachbarn.push(cellArray[(this.id + hilfsvektor[1] + hilfsvektor[3])]) //unten rechts 7
 }

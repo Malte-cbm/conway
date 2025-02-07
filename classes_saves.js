@@ -84,12 +84,21 @@ Save.prototype.dekomprimieren = function(){
             
             
         })
-        cellArray = this.felderliste
-        this.felderliste.forEach(field => field.getMoore())
+        console.log(this)
+        // cellArray = this.felderliste
+        // this.felderliste.forEach(field => field.getMoore())
 
-        drawArray(cellArray)
+        //drawArray(cellArray)
 
         
     }
     else {console.log("komprimieren war leer!")}
+
+Save.prototype.to_main_window = function(){
+
+    cellArray = this.felderliste
+    this.felderliste.forEach(field => field.getMoore())
+
+    drawArray(cellArray)
+}
 }

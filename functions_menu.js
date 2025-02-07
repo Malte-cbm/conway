@@ -1,6 +1,6 @@
 //functions_menu.js
 
-function gnopfdrug(){
+function tastaturDruck(){
     onkeydown = hum =>{
 
         switch(hum.key){
@@ -21,3 +21,8 @@ function gnopfdrug(){
                 break
         
 }}}
+
+// function choose_preset(){
+
+//     const dropdown = document.createElement("select")
+// }

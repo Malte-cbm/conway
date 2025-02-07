@@ -7,12 +7,12 @@ function step_by_step(){
     canvas.onclick = evt =>{
         nextIter();}
     
-    gnopfdrug()
+    tastaturDruck()
 }
 
 function auto_run(){
 
-    textfeld.value = "Auto Run => 1 Sekunde"
+    textfeld.value = "Auto Run 0.1 Sekunde"
 
     if (!loop){
         loop = setInterval(()=> {
@@ -42,16 +42,24 @@ function editor(){
         drawArray(cellArray)
 
     }
-    gnopfdrug()
+    tastaturDruck()
 
 }
 
 function preset(){
 
-fetch('daten.json')
-  .then(response => response.json())  // JSON in ein Objekt umwandeln
-  .then(data => console.log(data))    // JSON-Daten ausgeben
-  .catch(error => console.error('Fehler:', error));
- 
+    canvas.onclick = evt =>{
 
+        let cl_x = evt.offsetX
+        let cl_y = evt.offsetY
+
+        let cl_id = getIDCoord(cl_x,cl_y)
+        console.log(cl_id)
+        
+        if (preset_store){
+
+        preset_drop(preset_store, cellArray[cl_id])
+        drawArray(cellArray)
+    }
+    }
 }

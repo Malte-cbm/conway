@@ -65,3 +65,28 @@ function getIDCoord(x,y){
     let erg = getID(arrX,arrY)
     return erg
 }
+
+function preset_drop(preset, zelle){
+
+  
+    let id_cell = zelle.id
+
+    for (let i = 0; i < preset.gridForm.y; i++){
+
+        
+        for (let j = 0; j < preset.gridForm.x; j++){
+
+            let k = i*preset.gridForm.x + j
+
+
+            cellArray[id_cell].alive = preset.felderliste[k].alive
+            
+            id_cell = cellArray[id_cell].nachbarn[4].id
+            console.log("ID rechter Nachbar cellArray: " + id_cell)
+            }
+        
+        id_cell = cellArray[id_cell].nachbarn[6].id - preset.gridForm.x 
+        console.log("ID Zeile drunter links cellArray: " + id_cell)
+    }
+
+    }
