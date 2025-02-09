@@ -1,0 +1,82 @@
+* {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+}
+.hidden {
+    display: none;
+}
+
+h1 {
+    font-size: 40pt;
+    text-align: center;
+    color: azure;
+}
+
+#data {
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+input {
+    border: 6px solid #254658;
+    border-radius: 12px;
+    background-color: azure;
+    width: 20%;
+}
+#textfeld {
+    position: absolute;
+    right: 5%;
+    font-size: 20px;
+    text-align: center;
+}
+
+button {
+    background-color: #00cccc; /* Green */
+    border: none;
+    color: azure;
+    margin: 10px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    width: 100%;
+  }
+
+
+body {
+
+    background-image: url("Dawn_1280x960.jpg");
+    background-color: #cccccc;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#wichtiges {
+    display: flex;
+    position: relative;
+}
+
+#malen {
+    position: absolute;
+    right: 28%;
+}
+
+#knopfs {
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 150px;
+    top: 300px;
+}
+
+#config_form {
+    padding: 20px;
+    background-color: red;
+    justify-content: center;
+    align-items: center;
+    position:fixed;
+    top: 200px;
+    width:100px;
+}
